@@ -1,0 +1,30 @@
+image: gitpod/workspace-node-lts
+
+tasks:
+  - name: Setup POZO
+    init: |
+      npm install
+    command: |
+      echo ""
+      echo "╔══════════════════════════════════╗"
+      echo "║   POZO — Ambiente pronto         ║"
+      echo "╚══════════════════════════════════╝"
+      echo ""
+      echo "Comandos disponíveis:"
+      echo "  npm run dev   → inicia servidor local"
+      echo "  glab auth     → autenticar GitLab"
+      echo ""
+      [ ! -f ".env" ] && cp .env.example .env && echo "⚠️  .env criado — configure as chaves no painel Gitpod > Variables"
+      npm run dev
+
+ports:
+  - port: 5173
+    onOpen: open-browser
+    visibility: public
+
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - bradlc.vscode-tailwindcss
+    - GitLab.gitlab-workflow
