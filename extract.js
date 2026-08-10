@@ -30,7 +30,7 @@ const manifestMatch = realHtml.match(/<script type="__bundler\/manifest">([\s\S]
 let resources = {};
 if (manifestMatch) {
   try {
-    resources = JSON.parse(manifestMatch.group(1));
+    resources = JSON.parse(manifestMatch[1]);
     console.log(`Resources: ${Object.keys(resources).length} items`);
   } catch(e) { console.error('Manifest parse error:', e.message); }
 }
@@ -122,7 +122,7 @@ const afterFooter = realHtml.substring(footerClose);
 const jsMatch = afterFooter.match(/<script>([\s\S]*?)<\/script>/);
 let js = '';
 if (jsMatch) {
-  js = jsMatch.group(1);
+  js = jsMatch[1];
   // Unescape JSON-encoded characters
   js = js.replace(/\\n/g, '\n');
   js = js.replace(/\\t/g, '\t');
