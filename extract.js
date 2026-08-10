@@ -102,7 +102,7 @@ let cssBlocks = [];
 while ((m = styleRegex.exec(headContent)) !== null) cssBlocks.push(m[1]);
 
 // Skip first 2 style blocks (loader styles), keep fonts + main CSS
-let css = cssBlocks.slice(2).join('\n\n');
+let css = cssBlocks.join('\n\n');
 
 // Replace UUID font paths
 const fontReplacements = {
